@@ -29,36 +29,40 @@
       position: relative;
       display: flex;
       min-height: min(720px, 78svh);
-      align-items: end;
+      align-items: start;
       overflow: hidden;
       background: var(--ink);
       color: var(--paper);
     }
-    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 56%; }
-    .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(13 24 22 / 79%), rgb(13 24 22 / 26%)), linear-gradient(0deg, rgb(13 24 22 / 47%), transparent 58%); content: ""; }
-    .hero-content { position: relative; z-index: 1; width: min(100%, 1440px); margin: 0 auto; padding: 5rem clamp(1.5rem, 9vw, 8rem); }
-    h1 { max-width: 900px; margin: 0; font-family: var(--serif); font-size: 7rem; font-weight: 400; line-height: .95; }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 58%; filter: grayscale(100%); }
+    .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(13 24 22 / 67%), rgb(13 24 22 / 20%) 65%, rgb(13 24 22 / 8%)), linear-gradient(0deg, rgb(13 24 22 / 18%), transparent 58%); content: ""; }
+    .hero-content { position: relative; z-index: 1; width: min(100%, 1440px); margin: 0 auto; padding: 4.5rem clamp(1.5rem, 9vw, 8rem); }
+    .photo-credit { position: absolute; z-index: 1; top: 1rem; right: 1rem; max-width: calc(100% - 2rem); padding: .45rem .65rem; border-radius: 5px; background: rgb(13 24 22 / 68%); color: white; font-size: .64rem; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    h1 { max-width: 900px; margin: 0; font-family: var(--serif); font-size: 5.5rem; font-weight: 400; line-height: .95; }
     h1 span { display: block; color: var(--green); }
 
     .categories { padding: 4.5rem clamp(1.5rem, 9vw, 8rem) 5rem; }
     .categories-inner { width: min(100%, 1120px); margin: 0 auto; }
     .categories h2 { margin: 0 0 1.8rem; font-family: var(--serif); font-size: 2.8rem; font-weight: 400; }
-    .category-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #aeb8b2; }
+    .category-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; }
     .category-button {
       display: grid;
       min-height: 5.2rem;
       grid-template-columns: 2.2rem 1fr 1.2rem;
       align-items: center;
       gap: .8rem;
-      padding: 1rem 1rem 1rem 0;
-      border-bottom: 1px solid #aeb8b2;
+      padding: 1rem 1.1rem;
+      border: 1px solid #aeb8b2;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 3px 0 #d7ddda;
       text-decoration: none;
       font-size: .98rem;
       font-weight: 600;
-      transition: color .18s ease, padding .18s ease;
+      transition: color .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
     }
-    .category-button:not(:nth-child(3n)) { margin-right: 1.5rem; }
-    .category-button:hover, .category-button:focus-visible { padding-left: .35rem; color: var(--blue); }
+    .category-button:hover { transform: translateY(-2px); border-color: var(--blue); color: var(--blue); box-shadow: 0 5px 0 #c6d0dc; }
+    .category-button:active { transform: translateY(2px); box-shadow: 0 0 0 transparent; }
     .category-number { color: var(--red); font-size: .7rem; font-weight: 700; }
     .category-arrow { color: var(--blue); font-size: 1.15rem; text-align: right; }
 
@@ -74,20 +78,21 @@
     }
     .destination:nth-child(even) { background: var(--green); }
     .destination h2 { margin: 0; font-family: var(--serif); font-size: 4.5rem; font-weight: 400; line-height: 1.05; }
-    .back-button { display: inline-flex; min-height: 2.8rem; align-items: center; gap: .6rem; padding: .6rem .9rem; border: 1px solid currentColor; font-size: .76rem; font-weight: 700; text-decoration: none; }
-    .back-button:hover, .back-button:focus-visible { background: var(--ink); color: var(--paper); }
+    .back-button { display: inline-flex; min-height: 2.8rem; align-items: center; gap: .6rem; padding: .6rem .9rem; border: 1px solid currentColor; border-radius: 999px; background: white; box-shadow: 0 2px 0 #cbd2cd; font-size: .76rem; font-weight: 700; text-decoration: none; transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease; }
+    .back-button:hover { transform: translateY(-1px); background: var(--ink); color: var(--paper); box-shadow: 0 4px 0 #aeb8b2; }
+    .back-button:active { transform: translateY(1px); box-shadow: none; }
     a:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
 
     @media (max-width: 760px) {
       .hero { min-height: 65svh; }
       .hero-content { padding: 4rem 1.35rem; }
-      h1 { font-size: 4rem; }
+      h1 { font-size: 3.25rem; }
       .hero-image { object-position: 58% center; }
       .categories { padding: 3rem 1.35rem 3.5rem; }
       .categories h2 { margin-bottom: 1.25rem; font-size: 2.25rem; }
       .category-links { grid-template-columns: 1fr; }
       .category-button { min-height: 4.5rem; }
-      .category-button:not(:nth-child(3n)) { margin-right: 0; }
+      .category-links { gap: .75rem; }
       .destination { min-height: 64svh; align-items: start; flex-direction: column; justify-content: center; padding: 3rem 1.35rem; }
       .destination h2 { font-size: 3rem; }
     }
@@ -100,10 +105,11 @@
 <body>
   <main>
     <header class="hero">
-      <img class="hero-image" src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" alt="Railway tracks stretching into the distance" fetchpriority="high">
+      <img class="hero-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/African_American_Family_on_Porch.tif/lossy-page1-1920px-African_American_Family_on_Porch.tif.jpg" alt="An African American family gathered on a porch in 1938." fetchpriority="high">
       <div class="hero-content">
         <h1>The Great <span>Migration</span></h1>
       </div>
+      <a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:African_American_Family_on_Porch.tif" target="_blank" rel="noopener noreferrer">African American family on a porch, 1938 · Library of Congress / FSA</a>
     </header>
 
     <nav class="categories" id="categories" aria-labelledby="categories-title">
