@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16211f">
+  <title>The Great Migration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #16211f;
+      --paper: #f3f5f1;
+      --red: #e4513d;
+      --green: #b7d2c4;
+      --blue: #315eb7;
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "IBM Plex Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; }
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: min(720px, 78svh);
+      align-items: end;
+      overflow: hidden;
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 56%; }
+    .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(13 24 22 / 79%), rgb(13 24 22 / 26%)), linear-gradient(0deg, rgb(13 24 22 / 47%), transparent 58%); content: ""; }
+    .hero-content { position: relative; z-index: 1; width: min(100%, 1440px); margin: 0 auto; padding: 5rem clamp(1.5rem, 9vw, 8rem); }
+    h1 { max-width: 900px; margin: 0; font-family: var(--serif); font-size: 7rem; font-weight: 400; line-height: .95; }
+    h1 span { display: block; color: var(--green); }
+
+    .categories { padding: 4.5rem clamp(1.5rem, 9vw, 8rem) 5rem; }
+    .categories-inner { width: min(100%, 1120px); margin: 0 auto; }
+    .categories h2 { margin: 0 0 1.8rem; font-family: var(--serif); font-size: 2.8rem; font-weight: 400; }
+    .category-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #aeb8b2; }
+    .category-button {
+      display: grid;
+      min-height: 5.2rem;
+      grid-template-columns: 2.2rem 1fr 1.2rem;
+      align-items: center;
+      gap: .8rem;
+      padding: 1rem 1rem 1rem 0;
+      border-bottom: 1px solid #aeb8b2;
+      text-decoration: none;
+      font-size: .98rem;
+      font-weight: 600;
+      transition: color .18s ease, padding .18s ease;
+    }
+    .category-button:not(:nth-child(3n)) { margin-right: 1.5rem; }
+    .category-button:hover, .category-button:focus-visible { padding-left: .35rem; color: var(--blue); }
+    .category-number { color: var(--red); font-size: .7rem; font-weight: 700; }
+    .category-arrow { color: var(--blue); font-size: 1.15rem; text-align: right; }
+
+    .destination {
+      display: flex;
+      min-height: 76svh;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 4rem clamp(1.5rem, 9vw, 8rem);
+      border-top: 1px solid #cbd2cd;
+      scroll-margin-top: 0;
+    }
+    .destination:nth-child(even) { background: var(--green); }
+    .destination h2 { margin: 0; font-family: var(--serif); font-size: 4.5rem; font-weight: 400; line-height: 1.05; }
+    .back-button { display: inline-flex; min-height: 2.8rem; align-items: center; gap: .6rem; padding: .6rem .9rem; border: 1px solid currentColor; font-size: .76rem; font-weight: 700; text-decoration: none; }
+    .back-button:hover, .back-button:focus-visible { background: var(--ink); color: var(--paper); }
+    a:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+
+    @media (max-width: 760px) {
+      .hero { min-height: 65svh; }
+      .hero-content { padding: 4rem 1.35rem; }
+      h1 { font-size: 4rem; }
+      .hero-image { object-position: 58% center; }
+      .categories { padding: 3rem 1.35rem 3.5rem; }
+      .categories h2 { margin-bottom: 1.25rem; font-size: 2.25rem; }
+      .category-links { grid-template-columns: 1fr; }
+      .category-button { min-height: 4.5rem; }
+      .category-button:not(:nth-child(3n)) { margin-right: 0; }
+      .destination { min-height: 64svh; align-items: start; flex-direction: column; justify-content: center; padding: 3rem 1.35rem; }
+      .destination h2 { font-size: 3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" alt="Railway tracks stretching into the distance" fetchpriority="high">
+      <div class="hero-content">
+        <h1>The Great <span>Migration</span></h1>
+      </div>
+    </header>
+
+    <nav class="categories" id="categories" aria-labelledby="categories-title">
+      <div class="categories-inner">
+        <h2 id="categories-title">Categories</h2>
+        <div class="category-links">
+          <a class="category-button" href="#who"><span class="category-number">01</span><span>Who moved?</span><span class="category-arrow" aria-hidden="true">↘</span></a>
+          <a class="category-button" href="#when"><span class="category-number">02</span><span>When?</span><span class="category-arrow" aria-hidden="true">↘</span></a>
+          <a class="category-button" href="#where"><span class="category-number">03</span><span>Where?</span><span class="category-arrow" aria-hidden="true">↘</span></a>
+          <a class="category-button" href="#why"><span class="category-number">04</span><span>Why?</span><span class="category-arrow" aria-hidden="true">↘</span></a>
+          <a class="category-button" href="#journey"><span class="category-number">05</span><span>The journey</span><span class="category-arrow" aria-hidden="true">↘</span></a>
+          <a class="category-button" href="#life-after"><span class="category-number">06</span><span>Life after moving</span><span class="category-arrow" aria-hidden="true">↘</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="destination" id="who" aria-labelledby="who-title"><h2 id="who-title">Who moved?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
+    <section class="destination" id="when" aria-labelledby="when-title"><h2 id="when-title">When?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
+    <section class="destination" id="where" aria-labelledby="where-title"><h2 id="where-title">Where?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
+    <section class="destination" id="why" aria-labelledby="why-title"><h2 id="why-title">Why?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
+    <section class="destination" id="journey" aria-labelledby="journey-title"><h2 id="journey-title">The journey</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
+    <section class="destination" id="life-after" aria-labelledby="life-after-title"><h2 id="life-after-title">Life after moving</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
+  </main>
+</body>
+</html>
