@@ -24,11 +24,17 @@
     html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
     body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
     a { color: inherit; }
+    body:not(:has(.destination:target)) { height: 100svh; overflow: hidden; }
+    body:not(:has(.destination:target)) main {
+      display: grid;
+      height: 100%;
+      grid-template-rows: minmax(0, 0.4fr) minmax(0, 0.6fr);
+    }
 
     .hero {
       position: relative;
       display: flex;
-      min-height: min(720px, 78svh);
+      min-height: 0;
       align-items: start;
       overflow: hidden;
       background: var(--ink);
@@ -36,14 +42,14 @@
     }
     .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 58%; filter: grayscale(100%); }
     .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(13 24 22 / 67%), rgb(13 24 22 / 20%) 65%, rgb(13 24 22 / 8%)), linear-gradient(0deg, rgb(13 24 22 / 18%), transparent 58%); content: ""; }
-    .hero-content { position: relative; z-index: 1; width: min(100%, 1440px); margin: 0 auto; padding: 4.5rem clamp(1.5rem, 9vw, 8rem); }
+    .hero-content { position: relative; z-index: 1; width: min(100%, 1440px); margin: 0 auto; padding: 2rem clamp(1.5rem, 9vw, 8rem); }
     .photo-credit { position: absolute; z-index: 1; top: 1rem; right: 1rem; max-width: calc(100% - 2rem); padding: .45rem .65rem; border-radius: 5px; background: rgb(13 24 22 / 68%); color: white; font-size: .64rem; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     h1 { max-width: 900px; margin: 0; font-family: var(--serif); font-size: 5.5rem; font-weight: 400; line-height: .95; }
     h1 span { display: block; color: var(--green); }
 
-    .categories { padding: 4.5rem clamp(1.5rem, 9vw, 8rem) 5rem; }
+    .categories { display: flex; min-height: 0; align-items: center; padding: 1.5rem clamp(1.5rem, 9vw, 8rem); }
     .categories-inner { width: min(100%, 1120px); margin: 0 auto; }
-    .categories h2 { margin: 0 0 1.8rem; font-family: var(--serif); font-size: 2.8rem; font-weight: 400; }
+    .categories h2 { margin: 0 0 1rem; font-family: var(--serif); font-size: 2.8rem; font-weight: 400; }
     .category-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; }
     .category-button {
       display: grid;
@@ -87,15 +93,14 @@
     a:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
 
     @media (max-width: 760px) {
-      .hero { min-height: 65svh; }
-      .hero-content { padding: 4rem 1.35rem; }
+      body:not(:has(.destination:target)) main { grid-template-rows: minmax(0, 0.34fr) minmax(0, 0.66fr); }
+      .hero-content { padding: 1.5rem 1.35rem; }
       h1 { font-size: 3.25rem; }
       .hero-image { object-position: 58% center; }
-      .categories { padding: 3rem 1.35rem 3.5rem; }
-      .categories h2 { margin-bottom: 1.25rem; font-size: 2.25rem; }
-      .category-links { grid-template-columns: 1fr; }
-      .category-button { min-height: 4.5rem; }
-      .category-links { gap: .75rem; }
+      .categories { padding: 1rem 1.35rem; }
+      .categories h2 { margin-bottom: .75rem; font-size: 2rem; }
+      .category-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+      .category-button { min-height: 3.5rem; grid-template-columns: 1.6rem 1fr 1rem; gap: .4rem; padding: .65rem; font-size: .85rem; }
       .destination { min-height: 64svh; align-items: start; flex-direction: column; justify-content: center; padding: 3rem 1.35rem; }
       .destination h2 { font-size: 3rem; }
     }
