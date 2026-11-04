@@ -87,6 +87,11 @@
     .destination:target { display: flex; }
     .destination:nth-child(even) { background: var(--green); }
     .destination h2 { margin: 0; font-family: var(--serif); font-size: 4.5rem; font-weight: 400; line-height: 1.05; }
+    .destination-copy { width: min(100%, 850px); }
+    .destination-copy p { margin: 1.25rem 0 0; font-size: 1.15rem; line-height: 1.7; }
+    .destination-copy h3 { margin: 1.5rem 0 .5rem; font-size: 1rem; }
+    .destination-copy ul { margin: .5rem 0 0; padding-left: 1.25rem; font-size: 1.05rem; line-height: 1.7; }
+    .factor-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; }
     .back-button { display: inline-flex; min-height: 2.8rem; align-items: center; gap: .6rem; padding: .6rem .9rem; border: 1px solid currentColor; border-radius: 999px; background: white; box-shadow: 0 2px 0 #cbd2cd; font-size: .76rem; font-weight: 700; text-decoration: none; transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease; }
     .back-button:hover { transform: translateY(-1px); background: var(--ink); color: var(--paper); box-shadow: 0 4px 0 #aeb8b2; }
     .back-button:active { transform: translateY(1px); box-shadow: none; }
@@ -103,6 +108,9 @@
       .category-button { min-height: 3.5rem; grid-template-columns: 1.6rem 1fr 1rem; gap: .4rem; padding: .65rem; font-size: .85rem; }
       .destination { min-height: 64svh; align-items: start; flex-direction: column; justify-content: center; padding: 3rem 1.35rem; }
       .destination h2 { font-size: 3rem; }
+      .destination-copy p { font-size: 1rem; }
+      .destination-copy ul { font-size: .95rem; }
+      .factor-groups { grid-template-columns: 1fr; gap: .25rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -134,12 +142,81 @@
       </div>
     </nav>
 
-    <section class="destination" id="who" aria-labelledby="who-title"><h2 id="who-title">Who moved?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
-    <section class="destination" id="when" aria-labelledby="when-title"><h2 id="when-title">When?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
-    <section class="destination" id="where" aria-labelledby="where-title"><h2 id="where-title">Where?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
-    <section class="destination" id="why" aria-labelledby="why-title"><h2 id="why-title">Why?</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
-    <section class="destination" id="journey" aria-labelledby="journey-title"><h2 id="journey-title">The journey</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
-    <section class="destination" id="life-after" aria-labelledby="life-after-title"><h2 id="life-after-title">Life after moving</h2><a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a></section>
+    <section class="destination" id="who" aria-labelledby="who-title">
+      <div class="destination-copy">
+        <h2 id="who-title">Who moved?</h2>
+        <p>Millions of African Americans left the rural South for cities in other parts of the country. Many came from agricultural communities and worked as sharecroppers, tenant farmers, or laborers on plantations.</p>
+        <p>People moved as individuals and families, often following relatives and friends who had already settled in a destination city.</p>
+      </div>
+      <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
+    </section>
+    <section class="destination" id="when" aria-labelledby="when-title">
+      <div class="destination-copy">
+        <h2 id="when-title">When?</h2>
+        <p>The Great Migration took place from about 1910 to 1970. It happened in waves rather than all at once, with migration increasing during both World War I and World War II.</p>
+        <p>Wartime industries needed workers, creating new opportunities in cities. During World War II, Los Angeles attracted migrants with jobs in naval, shipbuilding, aircraft, and other military-related industries.</p>
+      </div>
+      <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
+    </section>
+    <section class="destination" id="where" aria-labelledby="where-title">
+      <div class="destination-copy">
+        <h2 id="where-title">Where?</h2>
+        <p>People moved from Southern states to cities across the country, especially in the North and Midwest. Popular destinations included:</p>
+        <ul>
+          <li>Chicago, Philadelphia, Boston, and New York City</li>
+          <li>Washington, D.C., Milwaukee, and Los Angeles</li>
+          <li>Oklahoma City</li>
+        </ul>
+        <p>Many migrants chose a city where they already had family, friends, or community connections. During World War II, Los Angeles became an important destination for people seeking work in naval and military industries.</p>
+      </div>
+      <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
+    </section>
+    <section class="destination" id="why" aria-labelledby="why-title">
+      <div class="destination-copy">
+        <h2 id="why-title">Why?</h2>
+        <div class="factor-groups">
+          <div>
+            <h3>Push factors</h3>
+            <ul>
+              <li>Jim Crow laws enforced segregation and denied basic rights.</li>
+              <li>Racial violence, threats, and discrimination made life unsafe and restricted opportunity.</li>
+              <li>The boll weevil damaged cotton crops, adding to hardship in Southern farming communities.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Pull factors</h3>
+            <ul>
+              <li>Industrial jobs and the chance to earn better wages</li>
+              <li>Hope for greater freedom and a new life</li>
+              <li>Demand for workers during World War I and World War II, including naval and military industries in Los Angeles</li>
+              <li>The <em>Chicago Defender</em>, which reported on life and opportunities outside the South</li>
+            </ul>
+          </div>
+        </div>
+        <p>Conditions varied by city, and moving North did not end racism or discrimination. Still, many people saw migration as a chance to seek safety, opportunity, and more control over their lives.</p>
+      </div>
+      <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
+    </section>
+    <section class="destination" id="journey" aria-labelledby="journey-title">
+      <div class="destination-copy">
+        <h2 id="journey-title">The journey</h2>
+        <p>Many migrants traveled north by railroad, carrying what they could and leaving home for a new city. Depending on the route and delays, a trip could take about one to two weeks.</p>
+        <p>Rail travel conditions varied. Some trains offered Pullman sleeping cars and more comfortable accommodations, while less expensive cars could be more crowded and uncomfortable.</p>
+        <p>Travelers also faced prejudice and discrimination, including instances of being denied service on the railroad.</p>
+        <p>Letters, newspapers, and word of mouth helped families choose where to go. The <em>Chicago Defender</em> circulated widely and shared reports about jobs and Black life in cities beyond the South.</p>
+        <p>The journey could be uncertain: migrants had to find transportation, work, and a place to live, sometimes with help from relatives or people from their hometown.</p>
+      </div>
+      <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
+    </section>
+    <section class="destination" id="life-after" aria-labelledby="life-after-title">
+      <div class="destination-copy">
+        <h2 id="life-after-title">Life after moving</h2>
+        <p>New arrivals built lives in unfamiliar cities, finding work in factories, railroads, service jobs, and other industries. They established neighborhoods, churches, businesses, newspapers, and civic organizations.</p>
+        <p>Migration helped transform cities and contributed to new cultural movements, including the Harlem Renaissance. Migrants also brought Southern traditions, music, food, and community life to their new homes.</p>
+        <p>Life in the North and West brought new possibilities, but it was not free of hardship. Black residents still faced housing segregation, job discrimination, and racial violence. Families built communities and continued working for equality.</p>
+      </div>
+      <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
+    </section>
   </main>
 </body>
 </html>
