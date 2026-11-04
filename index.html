@@ -24,8 +24,8 @@
     html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
     body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
     a { color: inherit; }
-    body:not(:has(.destination:target)) { height: 100svh; overflow: hidden; }
-    body:not(:has(.destination:target)) main {
+    body.home { height: 100svh; overflow: hidden; }
+    body.home main {
       display: grid;
       height: 100%;
       grid-template-rows: minmax(0, 0.4fr) minmax(0, 0.6fr);
@@ -82,8 +82,8 @@
       border-top: 1px solid #cbd2cd;
       scroll-margin-top: 0;
     }
-    body:has(.destination:target) .hero,
-    body:has(.destination:target) .categories { display: none; }
+    body.destination-view .hero,
+    body.destination-view .categories { display: none; }
     .destination:target { display: flex; }
     .destination:nth-child(even) { background: var(--green); }
     .destination h2 { margin: 0; font-family: var(--serif); font-size: 4.5rem; font-weight: 400; line-height: 1.05; }
@@ -98,7 +98,7 @@
     a:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
 
     @media (max-width: 760px) {
-      body:not(:has(.destination:target)) main { grid-template-rows: minmax(0, 0.34fr) minmax(0, 0.66fr); }
+      body.home main { grid-template-rows: minmax(0, 0.34fr) minmax(0, 0.66fr); }
       .hero-content { padding: 1.5rem 1.35rem; }
       h1 { font-size: 3.25rem; }
       .hero-image { object-position: 58% center; }
@@ -118,7 +118,7 @@
     }
   </style>
 </head>
-<body>
+<body class="home">
   <main>
     <header class="hero">
       <img class="hero-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/African_American_Family_on_Porch.tif/lossy-page1-1920px-African_American_Family_on_Porch.tif.jpg" alt="An African American family gathered on a porch in 1938." fetchpriority="high">
@@ -218,5 +218,20 @@
       <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
     </section>
   </main>
+  <script>
+    const destinations = new Set(
+      Array.from(document.querySelectorAll(".destination"), (section) => section.id)
+    );
+
+    function updatePageView() {
+      const destination = window.location.hash.slice(1);
+      const isDestination = destinations.has(destination);
+      document.body.classList.toggle("home", !isDestination);
+      document.body.classList.toggle("destination-view", isDestination);
+    }
+
+    window.addEventListener("hashchange", updatePageView);
+    updatePageView();
+  </script>
 </body>
 </html>
