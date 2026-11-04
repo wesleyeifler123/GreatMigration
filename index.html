@@ -67,8 +67,8 @@
     .category-arrow { color: var(--blue); font-size: 1.15rem; text-align: right; }
 
     .destination {
-      display: flex;
-      min-height: 76svh;
+      display: none;
+      min-height: 100svh;
       align-items: center;
       justify-content: space-between;
       gap: 2rem;
@@ -76,6 +76,9 @@
       border-top: 1px solid #cbd2cd;
       scroll-margin-top: 0;
     }
+    body:has(.destination:target) .hero,
+    body:has(.destination:target) .categories { display: none; }
+    .destination:target { display: flex; }
     .destination:nth-child(even) { background: var(--green); }
     .destination h2 { margin: 0; font-family: var(--serif); font-size: 4.5rem; font-weight: 400; line-height: 1.05; }
     .back-button { display: inline-flex; min-height: 2.8rem; align-items: center; gap: .6rem; padding: .6rem .9rem; border: 1px solid currentColor; border-radius: 999px; background: white; box-shadow: 0 2px 0 #cbd2cd; font-size: .76rem; font-weight: 700; text-decoration: none; transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease; }
