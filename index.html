@@ -90,12 +90,95 @@
     body.destination-view .categories { display: none; }
     .destination:target { display: flex; }
     .destination:nth-child(even) { background: var(--green); }
+    .destination-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.9fr);
+      gap: 1.5rem;
+      align-items: center;
+      width: min(100%, 1400px);
+    }
     .destination h2 { margin: 0; font-family: var(--serif); font-size: 4.5rem; font-weight: 400; line-height: 1.05; }
     .destination-copy { width: min(100%, 850px); }
     .destination-copy p { margin: 1.25rem 0 0; font-size: 1.15rem; line-height: 1.7; }
     .destination-copy h3 { margin: 1.5rem 0 .5rem; font-size: 1rem; }
     .destination-copy ul { margin: .5rem 0 0; padding-left: 1.25rem; font-size: 1.05rem; line-height: 1.7; }
     .factor-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; }
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+      padding-top: 1.1rem;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1.05rem;
+      height: 2px;
+      background: rgb(22 33 31 / 18%);
+    }
+    .timeline-item {
+      position: relative;
+      padding-top: 1rem;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: .25rem;
+      left: 0;
+      width: .8rem;
+      height: .8rem;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+    .timeline-year {
+      display: block;
+      margin-left: 1.2rem;
+      color: var(--red);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .timeline-item h4 {
+      margin: .5rem 0 .3rem 1.2rem;
+      font-size: .86rem;
+      line-height: 1.2;
+    }
+    .timeline-item p {
+      margin: 0 0 0 1.2rem;
+      font-size: .72rem;
+      line-height: 1.4;
+      color: rgb(22 33 31 / 74%);
+    }
+    .destination-visual {
+      margin: 0;
+      padding: .9rem;
+      border: 1px solid rgb(22 33 31 / 12%);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 18px 34px rgb(22 33 31 / 10%);
+    }
+    .destination-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 270px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 16px;
+      filter: grayscale(100%) contrast(1.1) brightness(0.92);
+    }
+    .destination-visual figcaption {
+      margin-top: .7rem;
+      font-size: .8rem;
+      line-height: 1.5;
+      color: rgb(22 33 31 / 76%);
+    }
     .back-button { display: inline-flex; min-height: 2.8rem; align-items: center; gap: .6rem; padding: .6rem .9rem; border: 1px solid currentColor; border-radius: 999px; background: white; box-shadow: 0 2px 0 #cbd2cd; font-size: .76rem; font-weight: 700; text-decoration: none; transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease; }
     .back-button:hover { transform: translateY(-1px); background: var(--ink); color: var(--paper); box-shadow: 0 4px 0 #aeb8b2; }
     .back-button:active { transform: translateY(1px); box-shadow: none; }
@@ -111,9 +194,12 @@
       .category-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
       .category-button { min-height: 3.5rem; grid-template-columns: 1.6rem 1fr 1rem; gap: .4rem; padding: .65rem; font-size: .85rem; }
       .destination { min-height: 64svh; align-items: start; flex-direction: column; justify-content: center; padding: 3rem 1.35rem; }
+      .destination-inner { grid-template-columns: 1fr; }
       .destination h2 { font-size: 3rem; }
       .destination-copy p { font-size: 1rem; }
       .destination-copy ul { font-size: .95rem; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .destination-visual img { height: 270px; }
       .factor-groups { grid-template-columns: 1fr; gap: .25rem; }
     }
 
@@ -147,79 +233,143 @@
     </nav>
 
     <section class="destination" id="who" aria-labelledby="who-title">
-      <div class="destination-copy">
-        <h2 id="who-title">Who moved?</h2>
-        <p>Millions of African Americans left the rural South for cities in other parts of the country. Many came from agricultural communities and worked as sharecroppers, tenant farmers, or laborers on plantations.</p>
-        <p>People moved as individuals and families, often following relatives and friends who had already settled in a destination city.</p>
+      <div class="destination-inner">
+        <div class="destination-copy">
+          <h2 id="who-title">Who moved?</h2>
+          <p>Millions of African Americans left the rural South for cities in other parts of the country. Many came from agricultural communities and worked as sharecroppers, tenant farmers, or laborers on plantations.</p>
+          <p>People moved as individuals and families, often following relatives and friends who had already settled in a destination city.</p>
+        </div>
+        <figure class="destination-visual">
+          <img src="./assets/who-moved.png" alt="A Black family standing beside a car in a rural setting, symbolizing migration from the South." loading="lazy">
+          <figcaption>Black families often moved together, carrying church, kinship, and neighborhood ties to new communities.</figcaption>
+        </figure>
       </div>
       <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
     </section>
     <section class="destination" id="when" aria-labelledby="when-title">
-      <div class="destination-copy">
-        <h2 id="when-title">When?</h2>
-        <p>The Great Migration took place from about 1910 to 1970. It happened in waves rather than all at once, with migration increasing during both World War I and World War II.</p>
-        <p>Wartime industries needed workers, creating new opportunities in cities. During World War II, Los Angeles attracted migrants with jobs in naval, shipbuilding, aircraft, and other military-related industries.</p>
+      <div class="destination-inner">
+        <div class="destination-copy">
+          <h2 id="when-title">When?</h2>
+          <p>The Great Migration took place from about 1910 to 1970. It happened in waves rather than all at once, with migration increasing during both World War I and World War II.</p>
+          <p>Wartime industries needed workers, creating new opportunities in cities. During World War II, Los Angeles attracted migrants with jobs in naval, shipbuilding, aircraft, and other military-related industries.</p>
+
+          <div class="timeline" aria-label="Great Migration timeline">
+            <div class="timeline-item">
+              <span class="timeline-year">1910</span>
+              <h4>First wave begins</h4>
+              <p>Black families begin moving north and west in larger numbers.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1919</span>
+              <h4>Postwar disruption</h4>
+              <p>Racial violence and labor changes pushed many to seek safer opportunities.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1920s</span>
+              <h4>Early expansion</h4>
+              <p>Factories, rail jobs, and city neighborhoods grew across the North.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1941</span>
+              <h4>Second wave</h4>
+              <p>World War II factory work drew millions of workers into new cities.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1970</span>
+              <h4>Migration continues</h4>
+              <p>The movement slowed, but its impact reshaped American cities for generations.</p>
+            </div>
+          </div>
+        </div>
+        <figure class="destination-visual">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="A black-and-white river landscape with calm water." loading="lazy">
+          <figcaption>Movement across time and distance shaped a new geography of opportunity, labor, and community.</figcaption>
+        </figure>
       </div>
       <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
     </section>
     <section class="destination" id="where" aria-labelledby="where-title">
-      <div class="destination-copy">
-        <h2 id="where-title">Where?</h2>
-        <p>People moved from Southern states to cities across the country, especially in the North and Midwest. Popular destinations included:</p>
-        <ul>
-          <li>Chicago, Philadelphia, Boston, and New York City</li>
-          <li>Washington, D.C., Milwaukee, and Los Angeles</li>
-          <li>Oklahoma City</li>
-        </ul>
-        <p>Many migrants chose a city where they already had family, friends, or community connections. During World War II, Los Angeles became an important destination for people seeking work in naval and military industries.</p>
+      <div class="destination-inner">
+        <div class="destination-copy">
+          <h2 id="where-title">Where?</h2>
+          <p>People moved from Southern states to cities across the country, especially in the North and Midwest. Popular destinations included:</p>
+          <ul>
+            <li>Chicago, Philadelphia, Boston, and New York City</li>
+            <li>Washington, D.C., Milwaukee, and Los Angeles</li>
+            <li>Oklahoma City</li>
+          </ul>
+          <p>Many migrants chose a city where they already had family, friends, or community connections. During World War II, Los Angeles became an important destination for people seeking work in naval and military industries.</p>
+        </div>
+        <figure class="destination-visual">
+          <img src="./assets/migration-routes-map.png" alt="Map showing migration routes from the Southern states to cities across the United States." loading="lazy">
+          <figcaption>Migration routes carried people from the South to destinations across the Midwest, Northeast, and West Coast.</figcaption>
+        </figure>
       </div>
       <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
     </section>
     <section class="destination" id="why" aria-labelledby="why-title">
-      <div class="destination-copy">
-        <h2 id="why-title">Why?</h2>
-        <div class="factor-groups">
-          <div>
-            <h3>Push factors</h3>
-            <ul>
-              <li>Jim Crow laws enforced segregation and denied basic rights.</li>
-              <li>Racial violence, threats, and discrimination made life unsafe and restricted opportunity.</li>
-              <li>The boll weevil damaged cotton crops, adding to hardship in Southern farming communities.</li>
-            </ul>
+      <div class="destination-inner">
+        <div class="destination-copy">
+          <h2 id="why-title">Why?</h2>
+          <div class="factor-groups">
+            <div>
+              <h3>Push factors</h3>
+              <ul>
+                <li>Jim Crow laws enforced segregation and denied basic rights.</li>
+                <li>Racial violence, threats, and discrimination made life unsafe and restricted opportunity.</li>
+                <li>The boll weevil damaged cotton crops, adding to hardship in Southern farming communities.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Pull factors</h3>
+              <ul>
+                <li>Industrial jobs and the chance to earn better wages</li>
+                <li>Hope for greater freedom and a new life</li>
+                <li>Demand for workers during World War I and World War II, including naval and military industries in Los Angeles</li>
+                <li>The <em>Chicago Defender</em>, which reported on life and opportunities outside the South</li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h3>Pull factors</h3>
-            <ul>
-              <li>Industrial jobs and the chance to earn better wages</li>
-              <li>Hope for greater freedom and a new life</li>
-              <li>Demand for workers during World War I and World War II, including naval and military industries in Los Angeles</li>
-              <li>The <em>Chicago Defender</em>, which reported on life and opportunities outside the South</li>
-            </ul>
-          </div>
+          <p>Conditions varied by city, and moving North did not end racism or discrimination. Still, many people saw migration as a chance to seek safety, opportunity, and more control over their lives.</p>
         </div>
-        <p>Conditions varied by city, and moving North did not end racism or discrimination. Still, many people saw migration as a chance to seek safety, opportunity, and more control over their lives.</p>
+        <figure class="destination-visual">
+          <img src="./assets/chicago-defender.png" alt="A front page of The Chicago Defender newspaper highlighting lynching and racial violence in 1919." loading="lazy">
+          <figcaption>The Chicago Defender helped spread news of jobs, migration, and racial violence, shaping how Black readers understood opportunity and risk.</figcaption>
+        </figure>
       </div>
       <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
     </section>
     <section class="destination" id="journey" aria-labelledby="journey-title">
-      <div class="destination-copy">
-        <h2 id="journey-title">The journey</h2>
-        <p>Many migrants traveled north by railroad, carrying what they could and leaving home for a new city. Depending on the route and delays, a trip could take about one to two weeks.</p>
-        <p>Rail travel conditions varied. Some trains offered Pullman sleeping cars and more comfortable accommodations, while less expensive cars could be more crowded and uncomfortable.</p>
-        <p>Travelers also faced prejudice and discrimination, including being denied service or treated unfairly by railroad staff. Even reaching a new city could mean enduring uncomfortable conditions and unequal treatment along the way.</p>
-        <p>Letters, newspapers, and word of mouth helped families choose where to go. The <em>Chicago Defender</em> circulated widely and shared reports about jobs and Black life in cities beyond the South.</p>
-        <p>The journey could be uncertain: migrants had to find transportation, work, and a place to live, sometimes with help from relatives or people from their hometown.</p>
+      <div class="destination-inner">
+        <div class="destination-copy">
+          <h2 id="journey-title">The journey</h2>
+          <p>Many migrants traveled north by railroad, carrying what they could and leaving home for a new city. Depending on the route and delays, a trip could take about one to two weeks.</p>
+          <p>Rail travel conditions varied. Some trains offered Pullman sleeping cars and more comfortable accommodations, while less expensive cars could be more crowded and uncomfortable.</p>
+          <p>Travelers also faced prejudice and discrimination, including being denied service or treated unfairly by railroad staff. Even reaching a new city could mean enduring uncomfortable conditions and unequal treatment along the way.</p>
+          <p>Letters, newspapers, and word of mouth helped families choose where to go. The <em>Chicago Defender</em> circulated widely and shared reports about jobs and Black life in cities beyond the South.</p>
+          <p>The journey could be uncertain: migrants had to find transportation, work, and a place to live, sometimes with help from relatives or people from their hometown.</p>
+        </div>
+        <figure class="destination-visual">
+          <img src="./assets/journey-train.png" alt="A Black man and child standing beside a train carrying luggage, symbolizing the Great Migration journey." loading="lazy">
+          <figcaption>The ride north was both hopeful and difficult, carrying families toward a new chapter while leaving old life behind.</figcaption>
+        </figure>
       </div>
       <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
     </section>
     <section class="destination" id="life-after" aria-labelledby="life-after-title">
-      <div class="destination-copy">
-        <h2 id="life-after-title">Life after moving</h2>
-        <p>Many migrants found work in factories, railroads, service jobs, and other industries. Factory work could require learning unfamiliar tasks and machinery. Jobs were often insecure: some employers could fire workers who became injured or could no longer keep up, and workers had few protections.</p>
-        <p>Affordable housing was scarce, so many families lived in crowded apartments or tenements and sometimes sold belongings to help pay rent. Pullman, near Chicago, was a company town built around the railroad industry. Black Pullman porters worked on the trains and helped serve passengers; the Brotherhood of Sleeping Car Porters, founded in 1925, organized for better pay and working conditions.</p>
-        <p>Compared with the Jim Crow South, many Northern cities offered greater political opportunities and fewer laws enforcing segregation in everyday life. But migrants did not find equality: prejudice and discrimination persisted in housing, jobs, schools, and public spaces.</p>
-        <p>Housing discrimination included redlining, a practice that denied or limited mortgages and investment in neighborhoods where Black residents lived. Racial hostility sometimes erupted into violence. During Chicago's 1919 race riot, white mobs attacked Black residents and neighborhoods; the violence was part of the wider Red Summer of 1919.</p>
-        <p>Despite these barriers, migrants built neighborhoods, churches, businesses, newspapers, and civic organizations. They helped transform city life and cultural movements such as the Harlem Renaissance, bringing Southern traditions, music, food, and community life to their new homes.</p>
+      <div class="destination-inner">
+        <div class="destination-copy">
+          <h2 id="life-after-title">Life after moving</h2>
+          <p>Many migrants found work in factories, railroads, service jobs, and other industries. Factory work could require learning unfamiliar tasks and machinery. Jobs were often insecure: some employers could fire workers who became injured or could no longer keep up, and workers had few protections.</p>
+          <p>Affordable housing was scarce, so many families lived in crowded apartments or tenements and sometimes sold belongings to help pay rent. Pullman, near Chicago, was a company town built around the railroad industry. Black Pullman porters worked on the trains and helped serve passengers; the Brotherhood of Sleeping Car Porters, founded in 1925, organized for better pay and working conditions.</p>
+          <p>Compared with the Jim Crow South, many Northern cities offered greater political opportunities and fewer laws enforcing segregation in everyday life. But migrants did not find equality: prejudice and discrimination persisted in housing, jobs, schools, and public spaces.</p>
+          <p>Housing discrimination included redlining, a practice that denied or limited mortgages and investment in neighborhoods where Black residents lived. Racial hostility sometimes erupted into violence. During Chicago's 1919 race riot, white mobs attacked Black residents and neighborhoods; the violence was part of the wider Red Summer of 1919.</p>
+          <p>Despite these barriers, migrants built neighborhoods, churches, businesses, newspapers, and civic organizations. They helped transform city life and cultural movements such as the Harlem Renaissance, bringing Southern traditions, music, food, and community life to their new homes.</p>
+        </div>
+        <figure class="destination-visual">
+          <img src="./assets/segregation-sign.png" alt="A Jim Crow-era sign directing Black people to a separate waiting room." loading="lazy">
+          <figcaption>Even after moving, Black Americans continued to face segregation and discrimination in public spaces.</figcaption>
+        </figure>
       </div>
       <a class="back-button" href="#categories"><span aria-hidden="true">↑</span> Categories</a>
     </section>
